@@ -1,0 +1,13 @@
+Bao gồm:
+
+Header 
+Slider 
+Content
+    About
+    Tour
+    Contact
+    Image
+Footer
+Xây dựng base
+Dựng từng phần theo phân tích
+Hoàn thiện
