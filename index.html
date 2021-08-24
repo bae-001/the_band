@@ -87,7 +87,7 @@
                                 <h3 class="place-heading">New York</h3>
                                 <p class="place-time">Fri 27 Nov 2016</p>
                                 <p class="place-description">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <a href="#" class="btn s-full-width">Buy Tickets</a>
+                                <button class="btn s-full-width js-buy-ticket">Buy Tickets</button>
                             </div>
                         </div>
 
@@ -97,7 +97,7 @@
                                 <h3 class="place-heading">Paris</h3>
                                 <p class="place-time">Sat 28 Nov 2016</p>
                                 <p class="place-description">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <a href="#" class="btn s-full-width">Buy Tickets</a>
+                                <button class="btn s-full-width js-buy-ticket">Buy Tickets</button>
                             </div>
                         </div>
 
@@ -107,7 +107,7 @@
                                 <h3 class="place-heading">San Francisco</h3>
                                 <p class="place-time">Sun 29 Nov 2016</p>
                                 <p class="place-description">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <a href="#" class="btn s-full-width">Buy Tickets</a>
+                                <button class="btn s-full-width js-buy-ticket">Buy Tickets</button>
                             </div>
                         </div>
                     </div>
@@ -129,16 +129,16 @@
                         <form action="">
                             <div class="row">
                                 <div class="col col-half s-col-full">
-                                    <input type="text" name="" id="" required class="form-control" placeholder="Name">
+                                    <input type="text" name="" required class="form-control" placeholder="Name">
                                 </div>
 
                                 <div class="col col-half s-col-full s-mt-8">
-                                    <input type="email" name="" id="" required class="form-control" placeholder="Email">
+                                    <input type="email" name="" required class="form-control" placeholder="Email">
                                 </div>
                             </div>
                             <div class="row mt-8">
                                 <div class="col col-full s-col-full">
-                                    <input type="text" name="" id="" required class="form-control" placeholder="Message">
+                                    <input type="text" name="" required class="form-control" placeholder="Message">
                                 </div>
                             </div>
                             <input class="btn pull-right mt-16 s-full-width" type="submit" value="SEND">
@@ -162,6 +162,44 @@
                 <a href=""><i class="ti-linkedin"></i></a>
             </div>
             <p class="copyright">Powered by <a target="_blank" href="https://www.facebook.com/NCM.NguyenCongMinh">Nguyen Cong Minh</a></p>
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal__container">
+            <div id="modal__close" class="modal__close">
+                <div class="ti-close"></div>
+            </div>
+
+            <header class="modal__header">
+                <i class="ti-bag modal__header__icon"></i>
+                Tickets
+            </header>
+
+            <div class="modal__body">
+                <label for="modal__input--quantity" class="modal__label">
+                    <i class="ti-shopping-cart"></i>
+                    Tickets, $15 per person
+                </label>
+                <input id="modal__input--quantity" type="text" class="modal__input" placeholder="How many?">
+
+                <label for="modal__input--email" class="modal__label">
+                    <i class="ti-user"></i>
+                    Send to
+                </label>
+                <input id="modal__input--email" type="text" class="modal__input" placeholder="Enter email...">
+                
+                <button id="buy-tickets">
+                    Pay
+                    <i class="ti-check"></i>
+                </button>
+            </div>
+
+         <footer class="modal__footer">
+             <p class="modal__footer__help">Need 
+                 <a href="#">help?</a>
+             </p>
+         </footer>
         </div>
     </div>
     <script>
@@ -194,6 +232,30 @@
             }
         }
         // end auto close when choose menu
+    </script>
+    <script>
+        const buyTickets = document.querySelectorAll('.js-buy-ticket');
+        const modal = document.getElementById('modal');
+        const closeModal = document.getElementById('modal__close');
+        const modal__container = document.querySelector('.modal__container');
+
+        buyTickets.forEach(element => {
+            element.addEventListener('click', function(){
+                modal.classList.add('modal--open');
+            })
+        });
+
+        closeModal.addEventListener('click', function(){
+            modal.classList.remove('modal--open');
+        });
+
+        modal.addEventListener('click', function(){
+            modal.classList.remove('modal--open');
+        });
+
+        modal__container.addEventListener('click', function(e){
+            e.stopPropagation()
+        });
     </script>
 </body>
 </html>
